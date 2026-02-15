@@ -18,6 +18,5 @@ __pycache__/
 *.docx
 
 # Data (Best practice: ignore data by default)
-*.csv
-*.xlsx
 *.rds
+.xlsx
