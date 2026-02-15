@@ -1,0 +1,20 @@
+---
+title: "607_3A"
+author: "Desiree Thomas"
+format: html
+editor: visual
+---
+
+## #Approach
+
+First I will have to load in my dataset. I need to find the missing values and replace them with a calculated estimate. Next I will need to calculate the baseline estimates, calculculate the overall mean, calculate the movie bias, and user bias. I'll generate the predictions by filtering for the unrated movies, merge the biases, and apply the formula. I will also need to cap the outliers to prevent it from scaling higher than the 5 point rating system we established. I can sort the users and isolate the highest picked movie per user. To make sure that I am actually performing the calculations correctly in my code, what I can do is for one or two of them, I can do a manual calculation as a quality check; I'll compare what I got to the outpu I received from the code. Some challenges I predict are simply working through the math and ensuring that my code is correct along with the potential need to debug. 
+
+#Load Libraries 
+
+```{r}
+library(tidyverse)
+library(dplyr)
+library(readr)
+library(readxl)
+```
+

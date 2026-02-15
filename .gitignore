@@ -1,0 +1,23 @@
+# macOS System Files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Quarto / R / Python 
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+.ipynb_checkpoints/
+__pycache__/
+
+# Quarto Render Outputs (Usually ignored unless you want the HTML on GitHub)
+/_site/
+/site_libs/
+*_cache/
+*.docx
+
+# Data (Best practice: ignore data by default)
+*.csv
+*.xlsx
+*.rds
