@@ -22,11 +22,46 @@ raw_data <- read_csv("https://raw.githubusercontent.com/desithomas/DATA607_3A/re
 ```
 
 ```{r}
+#Calculate the overall mean
 
 overall_mean <- raw_data %>% summarize(mean_value = mean(rating, na.rm = TRUE)) %>%
   pull(mean_value)
 
 #output shows as 3.04 which was the same as the manual calculation in the .xlsx version of the file
 overall_mean
+```
+```{r}
+
+#Calculate the item bias 
+
+movie_bias <- raw_data %>% 
+  group_by(movie_title) %>%
+  summarize(bi = mean(rating, na.rm = TRUE) - overall_mean)
+  
+movie_bias
+  
+```
+```{r}
+#Calculate the user bias 
+
+user_bias <- raw_data %>% 
+    group_by(profile_name) %>%
+    summarize(bu = mean(rating, na.rm = TRUE) - overall_mean)
+#Adam Stevens output matches manual calculation found in the .xlsx file Sheet 1
+user_bias
+
+```
+
+```{r}
+# calculate the predicted rating aka rui
+
+predicted_rating <- raw_data %>% 
+  filter(is.na(rating)) %>%
+  left_join(movie_bias, by ="movie_title") %>%
+  left_join(user_bias, by = "profile_name") %>%
+  #this runs the formula provided in the slides for the Predicted Rating 
+  mutate(predicted_rating = overall_mean + bi + bu)
+
+
 ```
 
